@@ -17,11 +17,14 @@
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+Formats code that is injected into string literals (e.g. via `// language=JSON`, `@Language("SQL")` or the
+*Inject language or reference* intention) whenever the surrounding file is reformatted with *Code | Reformat Code*.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
-
-To keep everything working, do not remove `<!-- ... -->` sections. 
+- The injected code is formatted with the code style of the injected language.
+- The indentation of the string literal and the line breaks after the opening and before the closing
+  delimiter are kept, so it works well with Kotlin's `trimIndent()` and Java text blocks.
+- Only string literals that already span multiple lines are formatted. Fragments containing escape sequences,
+  string interpolations or margin prefixes (`trimMargin()`) are left untouched.
 <!-- Plugin description end -->
 
 ## Installation
