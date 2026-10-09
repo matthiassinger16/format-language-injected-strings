@@ -23,8 +23,10 @@ Formats code that is injected into string literals (e.g. via `// language=JSON`,
 - The injected code is formatted with the code style of the injected language.
 - The indentation of the string literal and the line breaks after the opening and before the closing
   delimiter are kept, so it works well with Kotlin's `trimIndent()` and Java text blocks.
-- Only string literals that already span multiple lines are formatted. Fragments containing escape sequences,
-  string interpolations or margin prefixes (`trimMargin()`) are left untouched.
+- String interpolations like Kotlin's `$name` or `${expression}` are kept as they are while the code around them
+  is formatted.
+- Only string literals that already span multiple lines are formatted. Fragments containing escape sequences or
+  margin prefixes (`trimMargin()`) are left untouched.
 <!-- Plugin description end -->
 
 ## Installation
